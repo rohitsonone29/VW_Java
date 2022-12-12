@@ -1,0 +1,67 @@
+<div class="container">
+    <form #f="ngForm" (ngSubmit)="submitform(f)">
+   
+      <div class="form-group">
+        <label for="bookid">Book Id</label>
+        <input type="text" class="form-control" id="bookid" name="bookid"
+           required
+           [(ngModel)]="book.bookid"
+           #bid="ngModel"
+           
+        />
+        <div [hidden]="bid.valid || bid.pristine">
+           <b> BookId is Required </b>
+        </div>
+   
+       
+      </div>
+   
+      <div class="form-group">
+        <label for="bookname">Book Name</label>
+        <input type="text" class="form-control" id="bookname" name="bookname"
+          required minlength="4"
+          [(ngModel)]="book.bookname"
+          #bn="ngModel"   />
+         
+        <div [hidden]="bn.valid || bn.pristine">
+          <b> BookName is Required and should be minimum 4 char long! </b>
+        </div>  
+   
+      </div>
+   
+   
+      <div class="form-group">
+        <label for="bookauthor">Book Author</label>
+        <input type="text" class="form-control" id="bookauthor"  name="bookauthor"
+          required
+          [(ngModel)]="book.bookauthor"
+          #bauth="ngModel"
+         />
+       
+        <div [hidden]="bauth.valid || bauth.pristine">
+           <b> BookAuthor is Required </b>
+        </div>  
+   
+      </div>
+     <br>
+      <div class="form-group">
+        <input type="submit"
+          [disabled]="f.invalid"
+          class="btn btn-success"
+          name="submit"
+          value="Add Book" />
+         
+          <br> <br>
+        <button type="button" class="btn btn-success" (click)="f.reset()">Reset Form</button>
+      </div>
+   
+    </form>
+   
+    form valid = {{f.valid}} <br>
+    form pristine = {{f.pristine}} <br>
+    form dirty = {{f.dirty}} <br>
+    form values =
+    {{f.value.bookid}}
+    {{f.value.bookname}}
+    {{f.value.bookauthor}}
+    </div>
